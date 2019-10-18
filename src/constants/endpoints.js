@@ -1,0 +1,27 @@
+const BASE_URL = "http://api-dev.montaxii.com/api/v1";
+export const GET_TOKEN_URL = `${BASE_URL}/managers/login`;
+export const CHECK_TOKEN_URL = `${BASE_URL}/managers`;
+export const USERS_URL = `${BASE_URL}/managers`;
+export const USER_URL = `${USERS_URL}/{id}`;
+export const COUNTRIES_URL = `${BASE_URL}/countries`;
+export const COUNTRY_URL = `${COUNTRIES_URL}/{id}`;
+export const COUNTRY_TOWNS_URL = `${COUNTRIES_URL}/{id}/towns`;
+export const TOWNS_URL = `${BASE_URL}/towns`;
+export const TOWN_URL = `${TOWNS_URL}/{id}`;
+export const PICKUP_AREAS_URL = `${BASE_URL}/pickup_areas`;
+export const PICKUP_AREA_URL = `${PICKUP_AREAS_URL}/{id}`;
+export const DRIVERS_URL = `${BASE_URL}/drivers`;
+export const DRIVER_URL = `${DRIVERS_URL}/{id}`;
+export const TAXIS_URL = `${BASE_URL}/taxis`;
+export const TAXI_URL = `${TAXIS_URL}/{id}`;
+export const TAXI_DRIVERS = `${BASE_URL}/taxi_drivers`;
+export const TAXI_DRIVER = `${TAXI_DRIVERS}/{id}`;
+export const DRIVER_APPS_URL = `${BASE_URL}/applications`;
+export const DRIVER_APP = `${DRIVER_APPS_URL}/{id}`;
+export const SUBSCRIPTION_PLANS_URL = `${BASE_URL}/subscription_plans`;
+export const SUBSCRIPTION_PLAN_URL = `${SUBSCRIPTION_PLANS_URL}/{id}`;
+export const PRICES_URL = `${BASE_URL}/prices`;
+export const PRICE_URL = `${PRICES_URL}/{id}`;
+export const CLIENTS_URL = `${BASE_URL}/clients`;
+
+export const ALL_COUNTRIES_ENDPOINT = "https://restcountries.eu/rest/v2/all";
