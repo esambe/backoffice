@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Edit, Trash2, Trash, PlusCircle, Loader } from "react-feather";
 // import { EDIT_SUBSCRIPTION_PLAN } from "../constants/app_utils";
+import Select from 'react-select';
 
 function mapStateToProps(state) {
   return {
@@ -104,7 +105,19 @@ class ClientListView extends React.Component {
     this.props.fetchClient(this.props.token);
   };
 
+
   render() {
+
+    const countryOptions = this.props.clients.forEach( e => {
+      const name = e.name;
+      console.log('Name: ', name);
+
+      // for( let el in name) {
+      //   return console.log("Cty :", el.en);
+      // }
+      return name;
+    });
+
     return (
       <ClientView
         data={this.props.clients}
@@ -115,15 +128,16 @@ class ClientListView extends React.Component {
         // isUpdatingClient={this.props.isUpdatingClient}
         // isDeletingClient={this.props.isDeletingClient}
         // deletingClientId={this.props.deletingClientId}
-        addClientError={this.props.addClientError}
-        submitClientData={this.handleSubmitClientData}
+        // addClientError={this.props.addClientError}
+        // submitClientData={this.handleSubmitClientData}
         refreshClientTable={() =>
           this.props.fetchClient(this.props.token)
         }
+        countryOptions={countryOptions}
         columns={[
           {
-            Header: "Label",
-            accessor: "label",
+            Header: "No",
+            accessor: "id",
             Cell: props => (
               <CellItem
                 deleted={
@@ -135,8 +149,8 @@ class ClientListView extends React.Component {
             )
           },
           {
-            Header: "Amount",
-            accessor: "amount",
+            Header: "First Name",
+            accessor: "firstname",
             Cell: props => (
               <CellItem
                 deleted={
@@ -148,8 +162,8 @@ class ClientListView extends React.Component {
             )
           },
           {
-            Header: "Period",
-            accessor: "period.value",
+            Header: "Last Name",
+            accessor: "lastname",
             Cell: props => (
               <CellItem
                 deleted={
@@ -161,8 +175,8 @@ class ClientListView extends React.Component {
             )
           },
           {
-            Header: "Period Unit",
-            accessor: "period.unit",
+            Header: "Phone Number",
+            accessor: "phone",
             Cell: props => (
               <CellItem
                 deleted={
@@ -174,8 +188,8 @@ class ClientListView extends React.Component {
             )
           },
           {
-            Header: "Currency",
-            accessor: "currency.en",
+            Header: "Created At",
+            accessor: "created_at",
             Cell: props => (
               <CellItem
                 deleted={
@@ -186,32 +200,32 @@ class ClientListView extends React.Component {
               />
             )
           },
-          {
-            Header: "Duration",
-            accessor: "duration.fr",
-            Cell: props => (
-              <CellItem
-                deleted={
-                  this.props.isDeletedClient &&
-                  this.props.deletingClientId == props.original.id
-                }
-                item={props.value}
-              />
-            )
-          },
-          {
-            Header: "Recommendation",
-            accessor: "recommended",
-            Cell: props => (
-              <CellItem
-                deleted={
-                  this.props.isDeletedClient &&
-                  this.props.deletingClientId == props.original.id
-                }
-                item={props.value}
-              />
-            )
-          },
+          // {
+          //   Header: "Duration",
+          //   accessor: "duration.fr",
+          //   Cell: props => (
+          //     <CellItem
+          //       deleted={
+          //         this.props.isDeletedClient &&
+          //         this.props.deletingClientId == props.original.id
+          //       }
+          //       item={props.value}
+          //     />
+          //   )
+          // },
+          // {
+          //   Header: "Recommendation",
+          //   accessor: "recommended",
+          //   Cell: props => (
+          //     <CellItem
+          //       deleted={
+          //         this.props.isDeletedClient &&
+          //         this.props.deletingClientId == props.original.id
+          //       }
+          //       item={props.value}
+          //     />
+          //   )
+          // },
           {
             Header: "",
             Cell: props => (
@@ -244,7 +258,7 @@ class ClientListView extends React.Component {
             ),
             width: 100,
             filterable: false,
-            sortable: false
+            sortable: false,
           }
         ]}
       />

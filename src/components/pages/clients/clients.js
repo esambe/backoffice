@@ -6,6 +6,7 @@ import "react-table/react-table.css";
 import { withRouter } from 'react-router-dom';
 //import {LIST_COUNTRIES_ROUTE, ADD_COUNTRY_ROUTE} from "../../../constants/app_utils";
 import {RefreshCcw} from "react-feather";
+import Select from "react-select";
 
 class ClientsListView extends React.Component{
     // handleAddCountry = ()=>{
@@ -14,11 +15,41 @@ class ClientsListView extends React.Component{
     handleRefreshTable = ()=>{
         this.props.refreshClientsTable()
     }
+
     render(){
         return (
             <Fragment>
                 <div className="d-flex justify-content-between">
                     <ContentHeader>Clients</ContentHeader>
+                </div>
+                <div className="row py-3">
+                    <div className="col-sm-3">
+                        <Select
+                            className="basic-single"
+                            classNamePrefix="select"
+                            // defaultValue={this.props.countryOptions[0]}
+                            name="color"
+                            options={this.props.countryOptions}
+                        />
+                    </div>
+                    <div className="col-sm-3">
+                        <Select
+                            className="basic-single"
+                            classNamePrefix="select"
+                            // defaultValue={colourOptions[0]}
+                            name="color"
+                            // options={colourOptions}
+                        />
+                    </div>
+                    <div className="col-sm-3 ml-auto">
+                        <Select
+                            className="basic-single"
+                            classNamePrefix="select"
+                            // defaultValue={colourOptions[0]}
+                            name="color"
+                            // options={colourOptions}
+                        />
+                    </div>
                 </div>
                 <Card>
                     <div className="ml-1">
@@ -35,6 +66,7 @@ class ClientsListView extends React.Component{
                             columns = {this.props.columns}
                             defaultPageSize = {this.props.defaultPageSize?this.props.defaultPageSize:10}
                             className="-striped -highlight"
+                            // filterable
                         />
                     </CardBody>
                 </Card>
