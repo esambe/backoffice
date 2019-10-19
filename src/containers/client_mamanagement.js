@@ -4,6 +4,9 @@ import * as fetchActions from "../actions/clients/fetch_client_actions";
 // import * as addActions from "../actions/clients/add_clients_actions";
 // import * as updateActions from "../actions/clients/update_subscription_plans_actions";
 //import * as deleteActions from "../actions/subscription_plans/delete_subscription_plans_actions";
+import * as fetchCountryActions from "../actions/country/fetch_country_actions";
+import * as fetchCountryTownsActions from "../actions/country/fetch_country_towns";
+import * as fetchTownActions from "../actions/town/fetch_town_actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Edit, Trash2, Trash, PlusCircle, Loader } from "react-feather";
@@ -17,11 +20,17 @@ function mapStateToProps(state) {
 
     clients: state.clients.clients,
 
+    countries: state.countries.appCountries,
+    towns: state.towns.towns,
+
     isFetchingClient: state.clients.isFetchingClient,
     isLoadedClient: state.clients.isLoadedClient,
 
     fetchClientError: state.clients.fetchClientError,
-    loadClientError: state.clients.ClientError
+    loadClientError: state.clients.ClientError,
+
+    isFetchingAppCountries: state.countries.isFetchingAppCountries,
+    isLoadedAppCountries: state.countries.isLoadedAppCountries,
   };
 }
 
@@ -32,6 +41,9 @@ function mapDispatchToProps(dispatch) {
     //   ...addActions,
     //   ...updateActions,
     //   ...deleteActions
+      ...fetchTownActions,
+      ...fetchCountryActions,
+      ...fetchCountryTownsActions
     },
     dispatch
   );
@@ -62,6 +74,23 @@ class ClientListView extends React.Component {
   componentDidMount() {
     this.refreshClientTable();
   }
+
+
+  refreshClientTable = () => {
+    if (!this.props.isLoadedAppCountries) {
+      this.props.fetchAppCountries(this.props.token);
+    }
+
+    if (!this.props.isLoadedTowns) {
+      this.props.fetchTowns(this.props.token);
+    }
+    this.props.fetchClient(this.props.token);
+  };
+
+  getTownForCountry = countryId => {
+    let towns = [];
+    this.props.countries.countryId;
+  };
 
 //   setEditClient = ClientData => {
 //     this.setState(
@@ -101,22 +130,12 @@ class ClientListView extends React.Component {
 //       );
 //     }
 //   };
-  refreshClientTable = () => {
-    this.props.fetchClient(this.props.token);
-  };
+  // refreshClientTable = () => {
+  //   this.props.fetchClient(this.props.token);
+  // };
 
 
   render() {
-
-    const countryOptions = this.props.clients.forEach( e => {
-      const name = e.name;
-      console.log('Name: ', name);
-
-      // for( let el in name) {
-      //   return console.log("Cty :", el.en);
-      // }
-      return name;
-    });
 
     return (
       <ClientView
@@ -124,6 +143,8 @@ class ClientListView extends React.Component {
         editData={this.state.ClientEdit}
         isFetchingClient={this.props.isFetchingClient}
         fetchClientError={this.props.fetchClientError}
+        countries={this.props.countries}
+        towns={this.props.towns}
         // isAddingClient={this.props.isAddingClient}
         // isUpdatingClient={this.props.isUpdatingClient}
         // isDeletingClient={this.props.isDeletingClient}
@@ -133,7 +154,6 @@ class ClientListView extends React.Component {
         refreshClientTable={() =>
           this.props.fetchClient(this.props.token)
         }
-        countryOptions={countryOptions}
         columns={[
           {
             Header: "No",
@@ -226,40 +246,40 @@ class ClientListView extends React.Component {
           //     />
           //   )
           // },
-          {
-            Header: "",
-            Cell: props => (
-              <span>
-                <Edit
-                  size={18}
-                  className="mr-2 hand-cursor"
-                  color="#1565C0"
-                  onClick={() => this.setEditClient(props.original)}
-                />
-                {(this.props.isDeletingClient ||
-                  this.props.isDeletedClient) &&
-                this.props.deletingClientId == props.original.id ? (
-                  <Loader
-                    size={18}
-                    className="hand-cursor animate-spin"
-                    color="#FF586B"
-                  />
-                ) : (
-                  <Trash2
-                    size={18}
-                    className="hand-cursor"
-                    color="#FF586B"
-                    onClick={() =>
-                      this.deleteClient(props.original.id)
-                    }
-                  />
-                )}
-              </span>
-            ),
-            width: 100,
-            filterable: false,
-            sortable: false,
-          }
+          // {
+          //   Header: "",
+          //   Cell: props => (
+          //     <span>
+          //       <Edit
+          //         size={18}
+          //         className="mr-2 hand-cursor"
+          //         color="#1565C0"
+          //         onClick={() => this.setEditClient(props.original)}
+          //       />
+          //       {(this.props.isDeletingClient ||
+          //         this.props.isDeletedClient) &&
+          //       this.props.deletingClientId == props.original.id ? (
+          //         <Loader
+          //           size={18}
+          //           className="hand-cursor animate-spin"
+          //           color="#FF586B"
+          //         />
+          //       ) : (
+          //         <Trash2
+          //           size={18}
+          //           className="hand-cursor"
+          //           color="#FF586B"
+          //           onClick={() =>
+          //             this.deleteClient(props.original.id)
+          //           }
+          //         />
+          //       )}
+          //     </span>
+          //   ),
+          //   width: 100,
+          //   filterable: false,
+          //   sortable: false,
+          // }
         ]}
       />
     );

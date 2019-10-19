@@ -10,6 +10,9 @@ const initialState = {
 
   isFetchingClient: false,
   isLoadedClient: false,
+
+  clientsTownId: null,
+  clientsCountryId: null,
   
   fetchClientError: null,
   addClientError: null,
