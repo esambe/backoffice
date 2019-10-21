@@ -13,7 +13,8 @@ import taxi_drivers from "./taxi_drivers";
 import drivers_app from "./drivers_app";
 import subscription_plans from "./subscription_plans";
 import prices from "./prices";
-import clients from './clients'
+import clients from './clients';
+import requests from './requests';
 
 /**
  * Combines all reducers to return a single which is then used as
@@ -36,7 +37,8 @@ const rootReducer = combineReducers({
   drivers_app,
   subscription_plans,
   prices,
-  clients
+  clients,
+  requests
 });
 
 export default rootReducer;

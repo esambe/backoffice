@@ -12,6 +12,7 @@ import TaxiDriverDisplay from "./containers/taxi_drivers_management";
 import DriversAppDisplay from "./containers/drivers_app_management";
 import SubscriptionPlanDisplay from "./containers/subscription_plan_management";
 import ClientDisplay from './containers/client_mamanagement';
+import RequestDisplay from './containers/request_management';
 
 // import internal(own) modules
 import ProtectedRoute from "./layouts/routes/protectedRoute";
@@ -35,7 +36,8 @@ import {
   LIST_TAXI_DRIVER,
   LIST_DRIVERS_APP,
   LIST_SUBSCRIPTION_PLAN,
-  LIST_CLIENTS
+  LIST_CLIENTS,
+  LIST_REQUESTS
 } from "./constants/app_utils";
 
 class ApplicationRouter extends Component {
@@ -132,6 +134,15 @@ class ApplicationRouter extends Component {
               <MainLayout>
                 {" "}
                 <ClientDisplay {...matchprops} />{" "}
+              </MainLayout>
+            )}
+          />
+          <ProtectedRoute
+            path={LIST_REQUESTS}
+            render={matchprops => (
+              <MainLayout>
+                {" "}
+                <RequestDisplay {...matchprops} />{" "}
               </MainLayout>
             )}
           />

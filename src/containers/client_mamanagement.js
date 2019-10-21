@@ -23,6 +23,8 @@ function mapStateToProps(state) {
     countries: state.countries.appCountries,
     towns: state.towns.towns,
 
+    // requests: state.requests.appCountries,
+
     isFetchingClient: state.clients.isFetchingClient,
     isLoadedClient: state.clients.isLoadedClient,
 
@@ -145,6 +147,7 @@ class ClientListView extends React.Component {
         fetchClientError={this.props.fetchClientError}
         countries={this.props.countries}
         towns={this.props.towns}
+        requests={this.props.requests}
         // isAddingClient={this.props.isAddingClient}
         // isUpdatingClient={this.props.isUpdatingClient}
         // isDeletingClient={this.props.isDeletingClient}

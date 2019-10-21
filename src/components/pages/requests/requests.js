@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import {RefreshCcw} from "react-feather";
 import Select from "react-select";
 
-class ClientsListView extends React.Component{
+class RequestListView extends React.Component{
 
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ class ClientsListView extends React.Component{
         this.state = {
           countryId: -1,
           selectedCountryTowns: this.props.towns,
-          selectedClients: this.props.data,
+          selectedRequests: this.props.data,
           search: ''
         };
         // this.filterBy = this.filterBy.bind(this);
@@ -26,7 +26,7 @@ class ClientsListView extends React.Component{
       showTownsFor = townId => {
         this.setState({
           townId: townId,
-          selectedClients: Number.isInteger(townId)
+          selectedRequests: Number.isInteger(townId)
             ? this.props.data.filter(client => client.town_id === townId)
             : this.props.data
         });
@@ -34,7 +34,7 @@ class ClientsListView extends React.Component{
 
       filterBy = e => {
         const updatedList = this.props.data.filter( client => client.firstname  === e.target.value || client.laststname  === e.target.value );
-        this.setState({ selectedClients : [] ? updatedList : this.props.data });
+        this.setState({ selectedRequests : [] ? updatedList : this.props.data });
       };
 
       showCountriesFor = countryId => {
@@ -54,9 +54,9 @@ class ClientsListView extends React.Component{
               this.state.selectedCountryTowns.length > 0
                 ? this.state.selectedCountryTowns
                 : nextProps.towns,
-            selectedClients:
-              this.state.selectedClients.length > 0
-                ? this.state.selectedClients
+            selectedRequests:
+              this.state.selectedRequests.length > 0
+                ? this.state.selectedRequests
                 : nextProps.data
           },
           () => {
@@ -74,7 +74,7 @@ class ClientsListView extends React.Component{
         return (
             <Fragment>
                 <div className="d-flex justify-content-between">
-                    <ContentHeader>Clients</ContentHeader>
+                    <ContentHeader>Request</ContentHeader>
                 </div>
                 <div className="row py-3">
                     <div className="col-sm-3">
@@ -144,7 +144,7 @@ class ClientsListView extends React.Component{
                     </div>
                     <CardBody>
                         <ReactTable
-                            data = {this.state.selectedClients}
+                            data = {this.state.selectedRequests}
                             columns = {this.props.columns}
                             defaultPageSize = {this.props.defaultPageSize?this.props.defaultPageSize:10}
                             className="-striped -highlight"
@@ -157,4 +157,4 @@ class ClientsListView extends React.Component{
     }
 }
 
-export default withRouter(ClientsListView)
+export default withRouter(RequestListView)

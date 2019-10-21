@@ -35,3 +35,4 @@ export const LIST_PRICES_ROUTE = "/prices";
 export const ADD_PRICE_ROUTE = "/prices/add";
 export const EDIT_PRICE_ROUTE = "/prices/edit";
 export const LIST_CLIENTS = "/clients"
+export const LIST_REQUESTS = "/requests"

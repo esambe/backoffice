@@ -15,7 +15,8 @@ import {
   LIST_TAXI_DRIVER,
   LIST_DRIVERS_APP,
   LIST_SUBSCRIPTION_PLAN, 
-  LIST_CLIENTS
+  LIST_CLIENTS,
+  LIST_REQUESTS
 } from "../../../../constants/app_utils";
 
 // Styling
@@ -123,6 +124,14 @@ class SideMenuContent extends Component {
             activeClassName="active"
           >
             <span className="menu-item-text">Clients</span>
+          </NavLink>
+          <NavLink
+            to={LIST_REQUESTS}
+            exact
+            className="item"
+            activeClassName="active"
+          >
+            <span className="menu-item-text">Requests</span>
           </NavLink>
         </SideMenu.MenuMultiItems>
       </SideMenu>
