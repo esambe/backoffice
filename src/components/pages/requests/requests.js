@@ -74,7 +74,7 @@ class RequestListView extends React.Component{
         return (
             <Fragment>
                 <div className="d-flex justify-content-between">
-                    <ContentHeader>Request</ContentHeader>
+                    <ContentHeader>Requests</ContentHeader>
                 </div>
                 <div className="row py-3">
                     <div className="col-sm-3">

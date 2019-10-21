@@ -16,7 +16,8 @@ import {
   LIST_DRIVERS_APP,
   LIST_SUBSCRIPTION_PLAN, 
   LIST_CLIENTS,
-  LIST_REQUESTS
+  LIST_REQUESTS,
+  LIST_SUBSCRIPTIONS
 } from "../../../../constants/app_utils";
 
 // Styling
@@ -132,6 +133,14 @@ class SideMenuContent extends Component {
             activeClassName="active"
           >
             <span className="menu-item-text">Requests</span>
+          </NavLink>
+          <NavLink
+            to={LIST_SUBSCRIPTIONS}
+            exact
+            className="item"
+            activeClassName="active"
+          >
+            <span className="menu-item-text">Subscriptions</span>
           </NavLink>
         </SideMenu.MenuMultiItems>
       </SideMenu>

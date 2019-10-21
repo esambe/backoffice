@@ -13,6 +13,7 @@ import DriversAppDisplay from "./containers/drivers_app_management";
 import SubscriptionPlanDisplay from "./containers/subscription_plan_management";
 import ClientDisplay from './containers/client_mamanagement';
 import RequestDisplay from './containers/request_management';
+import SubscriptionDisplay from './containers/subscription_management';
 
 // import internal(own) modules
 import ProtectedRoute from "./layouts/routes/protectedRoute";
@@ -37,7 +38,8 @@ import {
   LIST_DRIVERS_APP,
   LIST_SUBSCRIPTION_PLAN,
   LIST_CLIENTS,
-  LIST_REQUESTS
+  LIST_REQUESTS,
+  LIST_SUBSCRIPTIONS
 } from "./constants/app_utils";
 
 class ApplicationRouter extends Component {
@@ -143,6 +145,15 @@ class ApplicationRouter extends Component {
               <MainLayout>
                 {" "}
                 <RequestDisplay {...matchprops} />{" "}
+              </MainLayout>
+            )}
+          />
+          <ProtectedRoute
+            path={LIST_SUBSCRIPTIONS}
+            render={matchprops => (
+              <MainLayout>
+                {" "}
+                <SubscriptionDisplay {...matchprops} /> {" "}
               </MainLayout>
             )}
           />
