@@ -191,6 +191,17 @@ class SubscriptionListView extends React.Component {
                 item={props.value}
               />
             )
+          },
+          {
+            Header: "Status",
+            accessor: "active",
+            Cell: props => (
+              <CellItem
+                item={props.value == 1 ? 
+                <div style={{ height: 10, width: 10, borderRadius: '50%', backgroundColor: 'green' }}></div> 
+                : <div style={{ height: 10, width: 10, borderRadius: '50%', backgroundColor: 'blue' }}></div>  }
+              />
+            )
           }
         ]}
       />
