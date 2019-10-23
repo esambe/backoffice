@@ -81,6 +81,7 @@ class RequestListView extends React.Component {
     if (!this.props.isLoadedTowns) {
       this.props.fetchTowns(this.props.token);
     }
+
     this.props.fetchRequest(this.props.token);
   };
 
@@ -114,7 +115,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -127,7 +128,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -140,7 +141,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -153,7 +154,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -166,7 +167,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value === undefined ? 'NULL' : props.value }
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -192,7 +193,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -205,20 +206,20 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
           {
             Header: "Price",
-            accessor: "price.amount",
+            accessor: "price",
             Cell: props => (
               <CellItem
                 deleted={
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.original.seats * props.original.price.amount}</div>}
               />
             )
           },
@@ -232,7 +233,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -245,7 +246,7 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },

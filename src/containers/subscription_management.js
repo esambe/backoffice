@@ -109,6 +109,7 @@ class SubscriptionListView extends React.Component {
   };
 
   render() {
+    var i = 0;
     return (
       <SubscriptionView
         data={this.props.subscriptions}
@@ -136,7 +137,8 @@ class SubscriptionListView extends React.Component {
                   this.props.isDeletedSubscription &&
                   this.props.deletingSubscriptionId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{i++}</div>}
+                className="text-center"
               />
             )
           },
@@ -149,7 +151,8 @@ class SubscriptionListView extends React.Component {
                   this.props.isDeletedSubscriptionPlan &&
                   this.props.deletingSubscriptionPlanId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
+                className="text-center"
               />
             )
           },
@@ -162,7 +165,8 @@ class SubscriptionListView extends React.Component {
                   this.props.isDeletedSubscriptionPlan &&
                   this.props.deletingSubscriptionPlanId == props.original.id
                 }
-                item={props.value}
+                className="text-center"
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -171,11 +175,12 @@ class SubscriptionListView extends React.Component {
             accessor: "subscribed_on",
             Cell: props => (
               <CellItem
+                className="text-center"
                 deleted={
                   this.props.isDeletedSubscriptionPlan &&
                   this.props.deletingSubscriptionPlanId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -184,11 +189,12 @@ class SubscriptionListView extends React.Component {
             accessor: "expired_on",
             Cell: props => (
               <CellItem
+                className="text-center"
                 deleted={
                   this.props.isDeletedSubscriptionPlan &&
                   this.props.deletingSubscriptionPlanId == props.original.id
                 }
-                item={props.value}
+                item={<div className="text-center">{props.value}</div>}
               />
             )
           },
@@ -198,8 +204,14 @@ class SubscriptionListView extends React.Component {
             Cell: props => (
               <CellItem
                 item={props.value == 1 ? 
-                <div style={{ height: 10, width: 10, borderRadius: '50%', backgroundColor: 'green' }}></div> 
-                : <div style={{ height: 10, width: 10, borderRadius: '50%', backgroundColor: 'blue' }}></div>  }
+                <div className="d-flex justify-content-center">
+                  <div style={{ height: 10, width: 10, borderRadius: '50%', backgroundColor: 'green' }}></div> 
+                </div>
+                :
+                <div className="d-flex justify-content-center">
+                 <div style={{ height: 10, width: 10, borderRadius: '50%', backgroundColor: 'blue' }}></div>  
+                </div>
+                }
               />
             )
           }
