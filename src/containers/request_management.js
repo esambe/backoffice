@@ -145,8 +145,8 @@ class RequestListView extends React.Component {
             )
           },
           {
-            Header: "Seats",
-            accessor: "seats",
+            Header: "Client",
+            accessor: "client.phone",
             Cell: props => (
               <CellItem
                 deleted={
@@ -158,18 +158,31 @@ class RequestListView extends React.Component {
             )
           },
           {
-            Header: "Departure Name",
-            accessor: "departure.name",
+            Header: "Driver",
+            accessor: "driver.phone",
             Cell: props => (
               <CellItem
                 deleted={
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={props.value}
+                item={props.value === undefined ? 'NULL' : props.value }
               />
             )
           },
+          // {
+          //   Header: "Driver",
+          //   accessor: "driver_id",
+          //   Cell: props => (
+          //     <CellItem
+          //       deleted={
+          //         this.props.isDeletedRequest &&
+          //         this.props.deletingRequestId == props.original.id
+          //       }
+          //       item={ props.value === null ? "NULL" : props.value }
+          //     />
+          //   )
+          // },
           {
             Header: "Service",
             accessor: "service.name.en",
@@ -184,8 +197,8 @@ class RequestListView extends React.Component {
             )
           },
           {
-            Header: "Driver Number",
-            accessor: "driver.phone",
+            Header: "Seats",
+            accessor: "seats",
             Cell: props => (
               <CellItem
                 deleted={
@@ -196,7 +209,6 @@ class RequestListView extends React.Component {
               />
             )
           },
-
           {
             Header: "Price",
             accessor: "price.amount",
