@@ -34,6 +34,11 @@ class SubscriptionListView extends React.Component {
     this.setState({ selectedSubscriptions : [] ? updatedList : this.props.data });
   };
 
+  // filterBy = e => {
+  //   const updatedList = this.props.data.filter( item =>  item.toLowerCase().search( e.target.value.toLowerCase() ) !== -1 );
+  //   this.setState({ selectedRequests: updatedList });
+  // };
+
   showCountriesFor = countryId => {
     //console.log("val:", evt.target.value);
     this.setState({

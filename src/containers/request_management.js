@@ -246,7 +246,21 @@ class RequestListView extends React.Component {
                   this.props.isDeletedRequest &&
                   this.props.deletingRequestId == props.original.id
                 }
-                item={<div className="text-center">{props.value}</div>}
+                item={<div className="text-center" style={
+                  props.value.toLowerCase() == 'cancelled' ? {color: 'red'} : 
+                  props.value.toLowerCase() == 'accepted'? {color: 'green'} : 
+                  props.value.toLowerCase() == 'pending' ? {color: 'orange'} :
+                  props.value.toLowerCase() == 'aborted' ? {color: 'black'} :
+                  props.value.toLowerCase() == 'terminated' ? {color: 'green'} :
+                  props.value.toLowerCase() == 'in-progress' ? {color: 'green'} : ''
+
+                }>{
+                  props.value.toLowerCase() == "terminated" ? <span> <i className="fa fa-circle"></i> {props.value}</span> : 
+                  props.value.toLowerCase() == "Accepted" ? <span> <i className="fa fa-circle"></i>  <i className="fa fa-circle"></i> {props.value}</span> :
+                  props.value.toLowerCase() == "in-progress" ? <span> <i className="fa fa-circle"></i>  <i className="fa fa-circle"></i> <i className="fa fa-circle"></i> {props.value}</span>: 
+                  props.value
+                }
+                </div>}
               />
             )
           },

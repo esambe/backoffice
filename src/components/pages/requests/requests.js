@@ -33,8 +33,13 @@ class RequestListView extends React.Component{
       };
 
       filterBy = e => {
-        const updatedList = this.props.data.filter( client => client.firstname  === e.target.value || client.laststname  === e.target.value );
-        this.setState({ selectedRequests : [] ? updatedList : this.props.data });
+        const updatedList = this.props.data.filter( client => client.firstname  === e.target.value  );
+        if(e.target.value !== '') {
+          this.setState({ selectedRequests: updatedList});
+        } else {
+
+          this.setState({ selectedRequests: this.props.data});
+        }
       };
 
       showCountriesFor = countryId => {
