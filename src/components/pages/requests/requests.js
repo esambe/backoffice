@@ -27,13 +27,13 @@ class RequestListView extends React.Component{
         this.setState({
           townId: townId,
           selectedRequests: Number.isInteger(townId)
-            ? this.props.data.filter(client => client.town_id === townId)
+            ? this.props.data.filter(request => request.town_id === townId)
             : this.props.data
         });
       };
 
       filterBy = e => {
-        const updatedList = this.props.data.filter( client => client.firstname  === e.target.value  );
+        const updatedList = this.props.data.filter( request => request.firstname  === e.target.value  );
         if(e.target.value !== '') {
           this.setState({ selectedRequests: updatedList});
         } else {
@@ -72,7 +72,7 @@ class RequestListView extends React.Component{
     };
 
     handleRefreshTable = ()=>{
-        this.props.refreshClientsTable()
+        this.props.refreshRequestTable();
     };
 
     render(){
@@ -140,11 +140,11 @@ class RequestListView extends React.Component{
                 </div>
                 <Card>
                     <div className="ml-1">
-                        <a onClick={()=>this.handleRefreshTable()} disabled={this.props.isFetchingClient}> 
+                        <a onClick={()=>this.handleRefreshTable()} disabled={this.props.isFetchingRequest}> 
                             <RefreshCcw 
                                 size={16} 
                                 color="#E64A19" 
-                                className={`${( this.props.isFetchingClient )?"animate-spin":""}`}/>
+                                className={`${( this.props.isFetchingRequest )?"animate-spin":""}`}/>
                         </a>
                     </div>
                     <CardBody>
