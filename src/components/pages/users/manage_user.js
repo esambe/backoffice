@@ -22,6 +22,7 @@ export default class UserManagementView extends React.Component{
             username: data.username?data.username:"",
             password: data.password?data.password:"",
             cpassword: "",
+            roleid: null,
             email: data.email?data.email:"",
             id: data.id?data.id:null
         }
@@ -173,6 +174,26 @@ export default class UserManagementView extends React.Component{
                                                 <Label for="userinput6" sm={4}>Confirm Password:</Label>
                                                 <Col sm={8}>
                                                     <Input type="password" id="userinput6" className="border-primary"  name="cpassword" value={this.state.cpassword} onChange={this.inputChanged} />
+                                                </Col>
+                                            </FormGroup>
+
+                                            <FormGroup row>
+                                                <Label for="userinput6" sm={4}>Assign Role:</Label>
+                                                <Col sm={8}>
+                                                    <Input type="select" id="userinput6" 
+                                                        className="border-primary"  
+                                                        name="roleid" 
+                                                        value={this.state.roleid} 
+                                                        onChange={this.inputChanged} 
+                                                    >
+                                                    <option>All Roles...</option>
+                                                        {this.props.appRoles &&
+                                                        this.props.appRoles.map(elt => (
+                                                            <option value={elt.id}>
+                                                                {elt.name}
+                                                            </option>
+                                                    ))}
+                                                    </Input>
                                                 </Col>
                                             </FormGroup>
                                         </Col>

@@ -25,5 +25,6 @@ export const PRICE_URL = `${PRICES_URL}/{id}`;
 export const CLIENTS_URL = `${BASE_URL}/clients`;
 export const CLIENT_REQUESTS_URL = `${BASE_URL}/requests`;
 export const SUBCRIPTION_REQUESTS_URL = `${BASE_URL}/subscriptions`;
+export const USER_ROLES = `${BASE_URL}/managers/roles`;
 
 export const ALL_COUNTRIES_ENDPOINT = "https://restcountries.eu/rest/v2/all";

@@ -1,6 +1,7 @@
 import React from "react";
 import UsersView from "../components/pages/users";
 import * as fetchActions from "../actions/users/fetch_user_actions";
+import * as fetchRoleActions from "../actions/roles/fetch_user_role_actions";
 import * as createActions from "../actions/users/create_user_actions";
 import * as updateActions from "../actions/users/update_user_actions";
 import * as deleteActions from "../actions/users/delete_user_actions";
@@ -16,6 +17,7 @@ function mapStateToProps(state){
     return {
         token: state.auth.userToken,
         users: state.users.allUsers,
+        appRoles: state.appRoles.appRoles,
         isFetchingUsers: state.users.isFetchingUsers,
         isLoadedUsers: state.users.isLoadedUsers,
         isCreatingUser: state.users.isCreatingUser,
@@ -32,7 +34,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({...fetchActions, ...createActions, ...updateActions, ...deleteActions, logoutUser:()=>logoutUser(dispatch)}, dispatch)
+    return bindActionCreators({...fetchActions, ...createActions, ...updateActions, ...deleteActions, ...fetchRoleActions, logoutUser:()=>logoutUser(dispatch)}, dispatch)
 }
 
 function CellItem(props){

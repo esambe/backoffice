@@ -16,6 +16,7 @@ import prices from "./prices";
 import clients from './clients';
 import requests from './requests';
 import subscriptions from './susbcriptions';
+import roles from './roles';
 
 /**
  * Combines all reducers to return a single which is then used as
@@ -40,7 +41,8 @@ const rootReducer = combineReducers({
   prices,
   clients,
   requests,
-  subscriptions
+  subscriptions,
+  roles
 });
 
 export default rootReducer;
