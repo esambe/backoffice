@@ -22,7 +22,7 @@ export default class UserManagementView extends React.Component{
             username: data.username?data.username:"",
             password: data.password?data.password:"",
             cpassword: "",
-            roleid: null,
+            role_id: data.roleid?data.roleid:null,
             email: data.email?data.email:"",
             id: data.id?data.id:null
         }
@@ -38,7 +38,7 @@ export default class UserManagementView extends React.Component{
     componentWillReceiveProps = (nextProps)=>{
         this.setData(nextProps.editData && nextProps.editData.id === this.state.id? this.state:
                         nextProps.editData?nextProps.editData:this.state.username?this.state:{});
-        if(this.props.location === EDIT_USER_ROUTE && nextProps.location === CREATE_USER_ROUTE){
+        if(this.props.location === EDIT_USER_ROUTE && nextProps.location === CREATE_USER_ROUTE) {
             window.scrollTo(0,0);
         }
     }
@@ -88,9 +88,9 @@ export default class UserManagementView extends React.Component{
         e.preventDefault();
         const errors = this.checkData()
         if(!errors){
-            let {firstname, lastname, username, password, email} = this.state;
+            let {firstname, lastname, username, password, email, role_id} = this.state;
             this.props.submitUserData(
-                    cleanObject({firstname, lastname, username, password, email}), this.state.id, (success, errors)=>{
+                    cleanObject({firstname, lastname, username, password, email, role_id}), this.state.id, (success, errors)=>{
                         if(!success){
                             this.displayMessage(errors?errors:"Operation Failed", "error");
                         }else{

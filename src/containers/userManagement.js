@@ -18,7 +18,7 @@ function mapStateToProps(state){
         token: state.auth.userToken,
         users: state.users.allUsers,
 
-        roles: state.roles.appRoles,
+        appRoles: state.roles.appRoles,
         isFetchingAppRoles: state.roles.isFetchingAppRoles,
 
         isFetchingUsers: state.users.isFetchingUsers,
@@ -56,6 +56,7 @@ class UsersListView extends React.Component{
 
     componentDidMount(){
         this.props.fetchAllUsers(this.props.token);
+        this.props.fetchAppRoles(this.props.token);
     }
 
     setEditUser = (userId, userData)=>{
@@ -107,6 +108,7 @@ class UsersListView extends React.Component{
                 createUserError = {this.props.createUserError}
                 updateUserError = {this.props.updateUserError}
                 submitUserData = {this.handleSumbitUserData}
+                appRoles = {this.props.appRoles}
                 refreshUsersTable = {()=>this.props.fetchAllUsers(this.props.token)}
                 columns={[
                     {Header: "First Name", accessor:"firstname", Cell: props=><CellItem deleted={(this.props.isDeletedUser && this.props.deletingUserId == props.original.id)} item={props.value} />},
