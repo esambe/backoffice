@@ -29,7 +29,7 @@
       "react-country-flag": "^1.0.1",
       "react-datetime": "^2.15.0",
       "react-dom": "^16.6.0",
-      "react-draft-wysiwyg": "^1.12.13",
+      "react-draft-wysiwyg": "^1.14.6",
       "react-dropzone": "^5.0.1",
       "react-feather": "^1.1.1",
       "react-horizontal-timeline": "^1.5.3",
